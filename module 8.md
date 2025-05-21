@@ -16,15 +16,48 @@ Algorithm:
  
 Program:
 
-//type your code here
-
+```
+#include<stdio.h>
+#include<ctype.h>
+int main ()
+{
+ char str[100];
+ scanf("%[^\n]",str);
+ int arr[10];
+ int i=0;
+ while(str[i]!=0)
+ {
+ if(isdigit(str[i]))
+ {
+ switch(str[i])
+ {
+ case '0':arr[0]+=1;break;
+ case '1':arr[1]+=1;break;
+ case '2':arr[2]+=1;break;
+ case '3':arr[3]+=1;break;
+ case '4':arr[4]+=1;break;
+ case '5':arr[5]+=1;break;
+ case '6':arr[6]+=1;break;
+ case '7':arr[7]+=1;break;
+ case '8':arr[8]+=1;break;
+ case '9':arr[9]+=1;break;
+ }
+ }
+ i++;
+ }
+ for( int j=0;j<10;j++)
+ {
+ printf("%d ",arr[j]);
+ }
+}
+```
 
 
 
 Output:
 
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/64a12779-cf7e-4cfc-a6dc-3df2ed508709)
 
 
 
@@ -47,15 +80,33 @@ Algorithm:
  
 Program:
 
-//type your code here
-
+```
+#include <stdio.h>
+int main() {
+ int freq[10] = {0};
+ char ch;
+ while ((ch = getchar()) != '\n')
+ {
+ if (ch >= '0' && ch <= '3')
+ {
+ int digit = ch - '0';
+ freq[digit]++;
+ }
+ }
+ for (int i = 0; i < 10; i++)
+ {
+ printf("%d ", freq[i]);
+ }
+ return 0;
+}
+```
 
 
 
 Output:
 
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/a11be4d4-6588-4109-973c-f538d192da20)
 
 
 
@@ -84,15 +135,71 @@ Free the memory allocated for each string in s Free the memory allocated for s
  
 Program:
 
-//type your code here
+```
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+void swap(char **a,char **b)
+{
+ char *temp=*a;
+ *a=*b;
+ *b=temp;
+}
+void reverse(char *arr[],int start,int end)
+{
+ while(start<end)
+ {
+ swap(&arr[start],&arr[end]);
+ start++;
+ end--;
+ }
+}
+int next_permutation(char *arr[],int n)
+{
+ int i=n-2;
+ while(i>=0 && strcmp(arr[i],arr[i+1])>=0)i--;
+ if(i<0) return 0;
+ int j=n-1;
+ while (strcmp(arr[i],arr[j])>=0)j--;
+ swap(&arr[i],&arr[j]);
+ reverse(arr,i+1,n-1);
+ return 1;
+}
+int compare(const void *a,const void *b)
+{
+ return strcmp(*(const char **)a,*(const char **)b);
+}
+int main ()
+{
+ int n;
+ scanf("%d",&n);
+ char *strings[n];
+ for(int i=0;i<n;i++)
+ {
+ strings[i]=malloc(101);
+ scanf("%s",strings[i] );
+ }
 
+ qsort(strings,n,sizeof(char *),compare);
+ do
+ {
+ for(int i=0;i<n;i++)
+ printf("%s ",strings[i]);
+ printf("\n");
+ }
+ while(next_permutation(strings,n));
+ for(int i=0;i<n;i++)
+ free(strings[i]);
+ return 0;
+}
+```
 
 
 
 Output:
 
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/b773637b-c4c9-4128-bb22-2238045aefba)
 
 
 
@@ -117,15 +224,32 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include<stdio.h>
+int main ()
+{
+ int n,i,j;
+ scanf("%d",&n);
+ int size=2*n-1;
+ for(i=0;i<size;i++)
+ {
+ for(j=0;j<size;j++)
+ {
+ int value=n-((i<j?i:j)<(size-i-1<size-j-1?size-i-1:size-j-1)?(i<j?i:j):(size-i-1<size-j1?size-i-1:size-j-1));
 
+ printf("%d ",value);
+ }
+ printf("\n");
+ }
+}
+```
 
 
 
 Output:
 
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/ab91a266-d1ad-4463-8bde-4139b22783d3)
 
 
 
@@ -156,15 +280,29 @@ o	Call the square() function and display the result.
 
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+int square() {
+ int num;
+ printf("Enter a number: ");
+ scanf("%d", &num);
+ return num * num;
+}
+int main() {
+ int result;
 
+ result = square();
+ printf("Square of the number is: %d\n", result);
+ return 0;
+}
+```
 
 
 
 Output:
 
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/7a8352a9-e2d8-4549-97d7-26c8fc641334)
 
 
 
